@@ -1,0 +1,101 @@
+
+#QUESTION NUMBER 1
+print('_____QUESTION 1____')
+
+while True:
+    try:
+        age = int(input('[ENTER YOUR AGE]'))
+        print('[YOUR AGE IS]', age)
+        break
+    except ValueError:
+        print('Invalid input, please enter the correct value')
+
+
+#QUESTION NUMBER 2
+print('___QUESTION 2_____')
+
+#opening the txt file
+with open("fruits.txt", "w")as file:
+    print('[THE FRUITS]')
+    file.write('Mango\n')
+    file.write('Banana\n')
+    file.write('Strawberry\n')
+    file.write('Apple\n')
+    file.write('Peaches\n')
+
+#reaading the txt file
+with open("fruits.txt", "r")as file:
+    for line in file:
+        print(line.strip())
+
+#QUESTION NUMBER 3
+print('____QUESTION 3_____')
+
+students = {
+    "Benjamin":"23",
+    "Victor":"50",
+    "Davis":"40",
+    "Mavis":"50",
+    "Tatenda":"70"
+         }
+print('[STUDENT MARKS]')
+for student in students:
+    print(students[student])
+
+highest_mark = 0
+top_student =""
+
+#finding the student with the highest mark
+for student in students:
+    mark =int(students[student])
+
+    if mark > highest_mark:
+        highest_mark = mark
+        top_student = student
+
+print("THE BEST STUDENT IS:", student)
+
+#QUESTION (ii)
+print('____QUESTION 3(ii)____')
+
+class Book():
+    def __init__(self, title, author, price):
+        self.title = title
+        self.author = author
+        self.price = price
+
+    def display_details(self):
+        print('Title:', self.title)
+        print('Author:', self.author)
+        print('Price:', self.price)
+#creating instances
+book1 = Book('48 laws Of Power', 'Robert Greene', 25)
+book2 = Book(' Laws Of Human Nature', 'Robert Greene', 25)
+print('[BOOKS]')
+book1.display_details()
+book2.display_details()
+
+
+#QUESTION NUMBER 4: 
+print('___QUESTION 4_____')
+
+
+def find_peak_usage(logs):
+    counts = [0] * 24 
+    for log in logs:
+        dt = datetime.fromisoformat(log)
+        hour = dt.hour
+        counts[hour] = counts[hour] + 1 
+        max_logins = max(counts)
+        return counts.index(max_logins)
+
+logs = [
+    "2026-08-04T08:15:20",
+    "2026-08-04T09:30:11",
+    "2026-08-04T13:05:44",
+    "2026-08-04T13:21:18",
+    "2026-08-04T13:55:01",
+    "2026-08-04T14:10:00"
+]
+
+print('PEAK HOUR =', find_peak_usage(logs))
